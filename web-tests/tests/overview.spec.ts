@@ -2,8 +2,8 @@ import { expect } from "@playwright/test";
 import { test } from "../src/fixtures/pages";
 
 test.describe('Overview Scenarios', () => {
-    test('Valida nombres, precios individuales por product, suma total del pedido y precio total con el tax incluido', async ({
-        cartPage, checkoutPage, inventoryPage, overviewPage, loggedPage
+    test('Valida nombres, precios individuales por producto, suma total del pedido y precio total con el tax incluido', async ({
+        cartPage, checkoutPage, inventoryPage, overviewPage, loggedPage, finishPage
     }) => {
         await inventoryPage.addProductForName('Sauce Labs Backpack');
         await inventoryPage.addProductForName('Sauce Labs Bike Light');
@@ -26,5 +26,7 @@ test.describe('Overview Scenarios', () => {
         const total = priceTotalCheckout + tax;
         expect(total).toBe(totalPriceTax);
         await overviewPage.finishOrder();
+        const thankYouMessage = await finishPage.getThankYouMessage();
+        expect(thankYouMessage).toContain("Thank you for your order!")
     })
 })

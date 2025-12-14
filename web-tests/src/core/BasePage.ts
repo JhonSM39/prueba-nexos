@@ -9,13 +9,10 @@ export class BasePage {
     try {
       await element.waitFor({ state: 'visible', timeout: 5000 });
 
-      // Scroll para evitar overlays
       await element.scrollIntoViewIfNeeded();
 
-      // Esperar que NO esté cubierto
       await expect(element).toBeEnabled();
 
-      // No uses trial en Safari/WebKit
       await element.click();
     } catch {
       logger.warn('Retrying click with force due to WebKit issues...');

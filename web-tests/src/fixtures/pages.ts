@@ -4,6 +4,7 @@ import { InventoryPage } from '../pages/InventoryPage';
 import { CartPage } from '../pages/CartPage';
 import { CheckoutPage } from '../pages/CheckoutPage';
 import { OverviewPage } from '../pages/OverviewPage';
+import { FinishPage } from '../pages/FinishPage';
 
 export const test = base.extend<{
   loginPage: LoginPage;
@@ -12,15 +13,14 @@ export const test = base.extend<{
   cartPage: CartPage;
   checkoutPage: CheckoutPage;
   overviewPage: OverviewPage;
+  finishPage: FinishPage;
 }>({
-  // ❌ No hace login → Para tests de login
   loginPage: async ({ page }, use) => {
     const login = new LoginPage(page);
     await login.navigate();
     await use(login);
   },
 
-  // ✅ Hace login automático → Para flows autenticados
   loggedPage: async ({ page }, use) => {
     const username = process.env.STD_USER!;
     const password = process.env.STD_PASS!;
@@ -46,6 +46,10 @@ export const test = base.extend<{
 
   overviewPage: async ({ page }, use) => {
     await use(new OverviewPage(page));
+  },
+
+  finishPage: async ({ page }, use) => {
+    await use(new FinishPage(page));
   },
 });
 

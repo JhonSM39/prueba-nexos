@@ -9,7 +9,6 @@ export class InventoryPage extends BasePage {
   private readonly productContainer;
   private readonly product: ProductComponent;
 
-  //Constructor
   constructor(page: Page) {
     super(page);
     this.productContainer = page.locator('[data-test="inventory-container"]');

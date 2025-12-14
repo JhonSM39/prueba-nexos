@@ -20,7 +20,7 @@ export class CartPage extends BasePage {
 
     return {
       name: name?.trim() || '',
-      price: this.extractNumber(price)  // <--- limpia aquí
+      price: this.extractNumber(price)
     };
   }
 
