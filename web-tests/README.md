@@ -44,13 +44,10 @@ cd prueba-automation/web-tests
 npm install
 
 3. Ejecutar pruebas
-npx playwright test
+todo los test (npm run test:allure)
+un test (npm run test:allure -- tests/login.spec.ts)
 
 4. Reportes Allure
-npx playwright show-report
-
-# Genera el reporte a partir de los resultados de la ejecución
-allure generate target/allure-results --clean -o target/allure-report
-
-# Abre el reporte en el navegador
-allure open target/allure-report
+npm run allure:report
+cd ./allures/reports/
+python3 -m http.server 8080
