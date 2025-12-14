@@ -1,0 +1,21 @@
+# ===== Maven / Java (API tests) =====
+**/target/
+**/*.log
+
+# ===== Allure =====
+**/allure-results/
+**/allure-report/
+
+# ===== Node / Playwright (Web tests) =====
+**/node_modules/
+**/playwright-report/
+**/.cache/
+
+# ===== IDE =====
+.idea/
+.vscode/
+*.iml
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
